@@ -1,4 +1,4 @@
-# Peer Branch: Prolific Annotation Task Setup
+Prolific Annotation Task Setup
 
 ## Overview
 
