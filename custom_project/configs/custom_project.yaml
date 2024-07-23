@@ -1,0 +1,141 @@
+{
+    "annotation_task_name": "Custom Example",
+
+    # Potato will write the annotation file for all annotations to this
+    # directory, as well as per-annotator output files and state information
+    # necessary to restart annotation.
+    "output_annotation_dir": "annotation_output/",
+
+    # The output format for the all-annotator data. Allowed formats are:
+    # * jsonl
+    # * json (same output as jsonl)
+    # * csv
+    # * tsv
+    #
+    "output_annotation_format": "csv",
+
+    # If annotators are using a codebook, this will be linked at the top to the
+    # instance for easy access
+    "annotation_codebook_url": "",
+
+    "data_files": [
+       "data/data.json"
+    ],
+
+    "item_properties": {
+        "id_key": "id",
+        "text_key": "text",
+    },
+
+
+    "user_config": {
+      "allow_all_users": True,
+      "users": [  ],
+    },
+
+     "prolific": {
+        "config_file_path": 'configs/prolific_config.yaml'
+    },
+
+    #defining the ways annotators entering the annotation system
+    "login": {
+       "type": 'prolific',    #can be 'password' or 'url_direct'
+    },
+
+    #the jumping-to-id function will be disabled if "jumping_to_id_disabled" is True
+    "jumping_to_id_disabled": False,
+
+  #the navigation bar will be hidden to the annotators if "hide_navbar" is True
+    "hide_navbar": True,
+
+
+    "surveyflow": {
+      "on": true,
+      "order": [
+        "pre_annotation",
+        "post_annotation"
+      ],
+      "pre_annotation": [
+        "surveyflow/consent.jsonl",
+      ],
+      "post_annotation": [
+
+      ],
+      "testing": [
+
+      ]
+    },
+
+
+    #"automatic_assignment": {
+     # "on": True, #whether do automatic task assignment for annotators, default False.
+      #"output_filename": 'annotation_output/simple-multirate/task_assignment.json',
+     # "sampling_strategy": 'random', #currently we support random assignment or ordered assignment. Use 'random' for random assignment and 'ordered' for ordered assignment
+      #"labels_per_instance": 3,  #the number of labels for each instance
+      #"instance_per_annotator": 5, #the total amount of instances to be assigned to each annotator
+      #"test_question_per_annotator": 0, # the number of attention test question to be inserted into the annotation queue. you must set up the test question in surveyflow to use this function
+
+      #"users": [ ],
+    #},
+
+    # How many seconds do you want the annotators spend on each instance, after
+    # that, an alert will be sent per alert_time_each_instance seconds.
+    "alert_time_each_instance": 10000000,
+
+    "annotation_schemes": [
+        {
+            "annotation_type": "multirate",
+
+            # This name gets used in reporting the annotation results
+            "name": "awesomeness",
+
+            # This text is shown to the user and can be a longer statement
+            "description": "Rate this Speech",
+
+            "display_config": {
+                                "num_columns":1
+            },
+
+            "arrangement":'vertical',
+
+            "options": ['Evidence Based', 'Intuition based'],
+            "labels": ['Strongly disagree', 'Disagree', 'Neutral', 'Agree' , 'Strongly Agree'],
+
+            # adding requirements for labels, when "required" is True, the annotators will be asked to finish the current instance to proceed
+            "label_requirement": { "required": True },
+
+            # If true, keys [1-size] will be bound to scale responses. Likert
+            # scales larger than 10 are not supported with this simple
+            # keybinding and will need to use the full item specification to
+            # bind all scale points to keys.
+            "sequential_key_binding": True,
+
+            # Whether randomizing the order of the options
+            "option_randomization": True
+            }
+    ],
+
+    # The html that changes the visualiztation for your task. Change this file
+    # to influence the layout and description of your task. This is not a full
+    # HTML page, just the piece that does lays out your task's pieces
+    # you may use templates in our lib, if you want to use your own template,
+    # please replace the string as a path to the template
+    "html_layout": "default",
+
+    # The core UI files for Potato. You should not need to change these normally.
+    #
+    # Exceptions to this might include:
+    # 1) You want to add custom CSS/fonts to style your task
+    # 2) Your layout requires additional JS/assets to render
+    # 3) You want to support additional keybinding magic
+    #
+    # if you want to use your own template,
+    # please replace the string as a path to the template
+    "base_html_template": "default",
+    "header_file": "default",
+
+    # This is where the actual HTML files will be generated
+    "site_dir": "default",
+
+
+}
