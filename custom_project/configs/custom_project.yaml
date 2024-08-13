@@ -33,13 +33,13 @@
       "users": [  ],
     },
 
-     "prolific": {
-        "config_file_path": 'configs/prolific_config.yaml'
-    },
+    # "prolific": {
+    #    "config_file_path": 'configs/prolific_config.yaml'
+    #},
 
     #defining the ways annotators entering the annotation system
     "login": {
-       "type": 'prolific',    #can be 'password' or 'url_direct'
+       "type": 'password',    #can be 'password' or 'url_direct'
     },
 
     #the jumping-to-id function will be disabled if "jumping_to_id_disabled" is True
