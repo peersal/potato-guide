@@ -15,7 +15,7 @@ This guide explains how to set up **SSL** for a bought domain using **Let's Encr
 1. Open your terminal (or use a program like **PuTTY** if you're on Windows).
 2. SSH into your VM:
    ```bash
-   ssh peer.saleth@<your-vm-ip>
+   ssh username@<your-vm-ip>
    ```
    You'll be prompted for your password if you're logging in for the first time or if you've set one.
 3. Ensure you are logged in as a non-root user (with `sudo` privileges) or as `root`.
