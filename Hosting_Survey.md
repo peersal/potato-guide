@@ -40,7 +40,7 @@ ls /remote/path/
 
 ---
 
-## 2. Setting Up and Hosting the Survey in a `tmux` Session
+## 2. Setting Up and Hosting the Survey in a `tmux` Session (ON SERVER)
 
 `tmux` allows you to run processes on the server even if you disconnect your terminal. Here's how to use it:
 
@@ -70,7 +70,7 @@ sudo apt install tmux
 
 4. Start the survey server (adjust command as needed):
    ```bash
-   python3 flask_server.py
+   potato start project
    ```
 
 ### **Detaching from the Session**
