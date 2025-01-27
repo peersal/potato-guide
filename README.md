@@ -15,7 +15,7 @@ This branch documents the progress of setting up annotation tasks using a server
 
 
 
-# Potato Annotation Setup Guide
+# Basic Potato Annotation Setup Guide
 
 This guide provides step-by-step instructions for setting up Potato for annotations via Prolific.
 
