@@ -7,10 +7,10 @@ This branch documents the progress of setting up annotation tasks using a server
 ## Objectives
 
 1. **Setup Prolific Annotation Tasks**: Document the step-by-step process of setting up annotation tasks on a server and integrating them with Prolific.
-2. **Customize Data Sampling**: Learn and implement methods to customize the data sampling process for participants.
-3. **Remote Machine Execution**: Ensure that the entire setup can run efficiently on a remote machine.
-4. **Integration with Prolific**: Seamlessly integrate the annotation server with Prolific for smooth task management and participant interaction.
-5. **Reproducible Process**: Develop a custom, reproducible process that can be used for future projects.
+2. **Setum Google VM**: Learn and implement methods to rent a VM and what necessary features we need.
+3. **Settup Domain and HTTPS**: Seamlessly integrate the annotation server with Prolific for smooth task management and participant interaction.
+4. **Remote Machine Execution**: Ensure that the entire setup can run efficiently on a remote machine.
+6. **Reproducible Process**: Develop a custom, reproducible process that can be used for future projects.
 
 
 
