@@ -140,24 +140,75 @@ Before reloading Nginx, ensure the configuration is correct.
 
 ## Step 8: Set Up Automatic SSL Renewal
 
-Let’s Encrypt certificates are valid for **90 days**. Set up automatic renewal to ensure the certificate is always valid.
+Let’s Encrypt certificates are valid for **90 days**, so it's crucial to ensure automatic renewal is properly configured. Below is a complete setup for automatic and manual renewal using Certbot and Nginx.
 
-1. Check for the cron job:
-   Certbot usually sets up a cron job to automatically renew the certificates. Verify with:
-   ```bash
-   sudo crontab -l
-   ```
-2. Test Renewal:
-   Run a **dry run** to simulate the renewal process:
-   ```bash
-   sudo certbot renew --dry-run
-   ```
-   If the test is successful, the renewal process will work automatically in the future.
+###  1. Configure Automatic Renewal with Cron
 
-## Final Notes
+Create a cron job for the root user that runs Certbot twice per day and reloads Nginx if a renewal occurs.
 
-- **Certbot** handles certificate renewal automatically, but make sure to check it periodically.
-- If you face issues with renewal, check the logs in `/var/log/letsencrypt/letsencrypt.log` for more details.
+Open the root crontab:
+```bash
+sudo crontab -e
+```
+
+Add the following line to the bottom of the file:
+```bash
+0 3,15 * * * certbot renew --quiet && systemctl reload nginx
+```
+
+This runs at **3:00 AM and 3:00 PM** daily. If a certificate is due for renewal (typically within 30 days of expiry), Certbot will renew it, and Nginx will be reloaded to apply the new certificate.
+
+To confirm the job was added:
+```bash
+sudo crontab -l
+```
+
+###  2. Test the Renewal Process
+
+You can simulate a renewal to make sure everything works:
+```bash
+sudo certbot renew --dry-run
+```
+
+This tests the renewal process without actually changing any certificates.
+
+---
+
+### ️ 3. Manual Renewal (If Automatic Fails)
+
+If automatic renewal fails or you're unsure it's working, you can manually renew the certificate.
+
+#### Step A: Stop Nginx (required for standalone mode)
+```bash
+sudo systemctl stop nginx
+```
+
+#### Step B: Manually renew the certificate
+```bash
+sudo certbot renew
+```
+
+Or for specific domains:
+```bash
+sudo certbot certonly --standalone -d yourdomain.com
+```
+
+#### Step C: Start Nginx again
+```bash
+sudo systemctl start nginx
+```
+
+---
+
+###  4. Check Certificate Expiration
+
+To verify when your certificates expire:
+```bash
+sudo certbot certificates
+```
+
+This shows all managed certificates, their domains, and expiry dates.
+
 
 ### Troubleshooting Tips:
 - **If SSL isn’t working**, check if the certificates exist in `/etc/letsencrypt/live/emi-survey.com/`.
